@@ -1,3 +1,4 @@
+import heapq
 """
 HW01 — Garden Hoses: Minimal Join Cost
 
@@ -22,7 +23,24 @@ Steps TODO:
 def min_cost_connect(lengths):
     # TODO: implement using a min-heap (heapq)
     # raise NotImplementedError to show failing tests until implemented
-    raise NotImplementedError
+    if len(lengths) <= 1:
+          return 0
+
+    heap = list(lengths)
+    heapq.heapify(heap)
+
+    total_cost = 0
+
+    while len(heap) > 1:
+        a = heapq.heappop(heap)
+        b = heapq.heappop(heap)
+        
+        current_cost = a + b
+        total_cost += current_cost
+        
+        heapq.heappush(heap, current_cost)
+
+    return total_cost
 
 
 if __name__ == "__main__":

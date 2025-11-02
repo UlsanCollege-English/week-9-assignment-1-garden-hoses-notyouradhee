@@ -2,7 +2,7 @@ import heapq
 import importlib.util, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SPEC = importlib.util.spec_from_file_location("main", ROOT / "garden_hoses.py")
+SPEC = importlib.util.spec_from_file_location("main", ROOT / "src" / "garden_hoses.py")
 main = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(main)
 min_cost_connect = main.min_cost_connect
 
@@ -24,7 +24,7 @@ def test_small_known_1():
     assert min_cost_connect([1,2,3,4]) == 19
 
 def test_small_known_2():
-    assert min_cost_connect([5,2,4]) == 18
+    assert min_cost_connect([5,2,4]) == 17
 
 def test_small_known_3():
     assert min_cost_connect([8,4,6,12]) == 58
